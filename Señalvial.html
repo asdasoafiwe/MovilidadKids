@@ -4,55 +4,59 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portal Infantil | Zonas Escolares</title>
+  <link rel="stylesheet" href="Moviparque.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: Arial, sans-serif; line-height: 1.5; position: relative; }
     .navbar { display: flex; align-items: center; background: #fff; padding: 10px 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     .navbar .logo { height: 50px; margin-right: 15px; }
     .navbar .titulo { font-size: 1.2rem; font-weight: bold; flex-grow: 1; }
-    .navbar .menu { list-style: none; display: flex; gap: 15px; }
-    .navbar .menu li a { text-decoration: none; color: #333; padding: 5px 10px; }
-    .navbar .menu li a.activo { background: #ffd700; border-radius: 4px; }
-    .hero { display: flex; align-items: center; justify-content: center; background-image: url('https://i.postimg.cc/MGxJyfTc/Rectangle-35.png'); background-size: cover; background-position: center; padding: 40px 20px; flex-wrap: wrap; }
-    .hero img.abeja { height: 300px; margin-right: 20px; animation: flotar 3s ease-in-out infinite; }
+    .navbar .menu1 { list-style: none; display: flex; gap: 15px; }
+    .navbar .menu1 li a { text-decoration: none; color: #333; padding: 5px 10px; }
+    .navbar .menu1 li a.activo { background: #ffd700; border-radius: 4px; }
+
+    /* HERO (abejita + texto) aumentado */
+    .hero {
+      display: flex; align-items: center; justify-content: center;
+      background-image: url('https://i.postimg.cc/MGxJyfTc/Rectangle-35.png'); background-size: cover;
+      background-position: center; padding: 60px 30px; flex-wrap: wrap;
+    }
+    .hero img.abeja {
+      height: 500px; margin-right: 25px; animation: flotar 3s ease-in-out infinite;
+    }
     @keyframes flotar { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
-    .hero-text { padding: 20px; border-radius: 8px; max-width: 500px; }
-    .hero-text h2 { margin-bottom: 10px; font-size: 2.5rem; color: #8a9a3a; }
-    .hero-text p { font-size: 1.2rem; color: #333; }
-    #zonas { background: #dde0c5; padding: 0; }
-    .zonas-header { background: #5a5d3d; padding: 10px; text-align: center; }
-    .zonas-header h2 { color: #fff; font-size: 1.6rem; }
-    .zonas-container { display: flex; overflow-x: auto; gap: 20px; padding: 30px 20px; justify-content: center; }
-    .zona-box { flex: 0 0 auto; width: 300px; height: 300px; display: flex; align-items: center; justify-content: center; border-radius: 12px; }
-    .zona-box img { width: 80%; height: auto; }
-    #juguemos { background-image: url('https://i.postimg.cc/MGxJyfTc/Rectangle-35.png'); background-size: cover; background-position: center; padding: 40px 20px; text-align: center; position: relative; }
-    #gameCanvas { display: block; margin: 20px auto; border: 2px dashed #ccc; border-radius: 12px; background: rgba(255,255,255,0.8); width: 800px; height: 300px; }
-    #gameOver {
-      display: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
+    .hero-text { padding: 25px; border-radius: 8px; max-width: 600px; }
+    .hero-text h2 { margin-bottom: 15px; font-size: 3rem; color: #8a9a3a; }
+    .hero-text p { font-size: 1.5rem; color: #333; }
+
+    /* Estilos modificados: sección TIPOS DE SEÑALES VIALES agrandada */
+    #zonas { background: #dde0c5; padding: 20px 0; }
+    .zonas-header { background: #5a5d3d; padding: 20px; text-align: center; }
+    .zonas-header h2 { color: #fff; font-size: 2.5rem; }
+    .zonas-container { display: flex; overflow-x: auto; gap: 30px; padding: 40px 20px; justify-content: center; }
+    .zona-box { flex: 0 0 auto; width: 400px; height: 400px; display: flex; align-items: center; justify-content: center; border-radius: 12px; }
+    .zona-box img { width: 90%; height: auto; }
+
+    /* JUEGUEMOS aumentado */
+    #juguemos {
+      background-image: url('https://i.postimg.cc/MGxJyfTc/Rectangle-35.png'); background-size: cover;
+      background-position: center; padding: 60px 30px; text-align: center; position: relative; overflow: visible;
+    }
+    #juguemos h2 { font-size: 2.5rem; margin-bottom: 20px; }
+    #gameCanvas {
+      display: block; position: relative; z-index: 1; margin: 30px auto;
+      border: 3px dashed #ccc; border-radius: 12px; background: rgba(255,255,255,0.8);
+      width: 1000px; height: 400px;
+    }
+    #gameOver { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); color: #fff;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10;
     }
     #gameOver h2 { font-size: 3rem; margin-bottom: 20px; }
     #gameOver p { font-size: 1.5rem; margin-bottom: 20px; }
-    #gameOver button {
-      padding: 10px 20px;
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      background: #ffd700;
-      color: #333;
-    }
+    #gameOver button { padding: 12px 24px; font-size: 1.3rem; border: none; border-radius: 5px; cursor: pointer; background: #ffd700; color: #333; }
+
+    /* Resto sin cambios */
     #publicidad { padding: 0; text-align: center; }
     #publicidad img { width: 100%; height: auto; display: block; }
     .banner-final { display: flex; flex-wrap: wrap; background: #333; color: #fff; padding: 20px; gap: 20px; }
@@ -63,10 +67,10 @@
     .banner-final p { margin: 5px 0; font-size: 0.9rem; }
     .banner-final .img-redes { margin-top: 10px; max-width: 100%; }
     @media (max-width: 768px) {
-      .hero { flex-direction: column; padding: 20px; }
-      .hero img.abeja { margin: 0 0 20px 0; height: 250px; }
+      .hero { flex-direction: column; padding: 30px 20px; }
+      .hero img.abeja { margin: 0 0 20px 0; height: 300px; }
       .hero-text { max-width: 100%; text-align: center; }
-      #gameCanvas { width: 100%; height: 200px; }
+      #gameCanvas { width: 100%; height: 250px; }
     }
   </style>
 </head>
@@ -76,10 +80,10 @@
       <img src="https://i.postimg.cc/wTM40Hx0/encabezadoo.png" alt="Logo Portal Infantil" class="logo" />
       <span class="titulo">Portal Infantil | Secretaría Distrital de Movilidad</span>
       <ul class="menu">
-        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html" >Inicio</a></li>
         <li><a href="Moviparque.html">Moviparque</a></li>
-        <li><a href="Zonaescolar.html" class="activo">Zonas escolares</a></li>
-        <li><a href="Señalvial.html">Señales viales</a></li>
+        <li><a href="Zonaescolar.html">Zonas escolares</a></li>
+        <li><a href="Señalvial.html" class="activo">Señales viales</a></li>
       </ul>
     </nav>
   </header>
@@ -99,8 +103,8 @@
       <h2>TIPOS DE SEÑALES VIALES</h2>
     </div>
     <div class="zonas-container">
-      <div class="zona-box"><img src="https://i.postimg.cc/d07qXB4X/Group-98.png" alt="Señal 1" /></div>
-      <div class="zona-box"><img src="https://i.postimg.cc/d07qXB4X/Group-98.png" alt="Señal 2" /></div>
+      <div class="zona-box"><img src="https://i.postimg.cc/sXVgnyb7/peatones.png" alt="Señal 1" /></div>
+      <div class="zona-box"><img src="https://i.postimg.cc/9fPftzgc/2cicloruta.png" alt="Señal 2" /></div>
       <div class="zona-box"><img src="https://i.postimg.cc/d07qXB4X/Group-98.png" alt="Señal 3" /></div>
       <div class="zona-box"><img src="https://i.postimg.cc/d07qXB4X/Group-98.png" alt="Señal 4" /></div>
     </div>
@@ -169,7 +173,6 @@
       const finalScoreP = document.getElementById('finalScore');
       const retryBtn = document.getElementById('retryBtn');
 
-      // imágenes
       const bg = new Image(); bg.src = 'https://i.postimg.cc/wvpJZJqX/escenario.png';
       const carSprite = new Image(); carSprite.src = 'https://i.postimg.cc/sgMphsHh/personajes.png';
       const sign30 = new Image(); sign30.src = 'https://i.postimg.cc/Hss0TQQ3/30-km.png';
