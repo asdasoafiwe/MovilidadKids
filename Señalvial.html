@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Infantil | Zonas Escolares</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; line-height: 1.5; position: relative; }
+    .navbar { display: flex; align-items: center; background: #fff; padding: 10px 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .navbar .logo { height: 50px; margin-right: 15px; }
+    .navbar .titulo { font-size: 1.2rem; font-weight: bold; flex-grow: 1; }
+    .navbar .menu { list-style: none; display: flex; gap: 15px; }
+    .navbar .menu li a { text-decoration: none; color: #333; padding: 5px 10px; }
+    .navbar .menu li a.activo { background: #ffd700; border-radius: 4px; }
+    .hero { display: flex; align-items: center; justify-content: center; background-image: url('https://i.postimg.cc/MGxJyfTc/Rectangle-35.png'); background-size: cover; background-position: center; padding: 40px 20px; flex-wrap: wrap; }
+    .hero img.abeja { height: 300px; margin-right: 20px; animation: flotar 3s ease-in-out infinite; }
+    @keyframes flotar { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+    .hero-text { padding: 20px; border-radius: 8px; max-width: 500px; }
+    .hero-text h2 { margin-bottom: 10px; font-size: 2.5rem; color: #8a9a3a; }
+    .hero-text p { font-size: 1.2rem; color: #333; }
+    #zonas { background: #dde0c5; padding: 0; }
+    .zonas-header { background: #5a5d3d; padding: 10px; text-align: center; }
+    .zonas-header h2 { color: #fff; font-size: 1.6rem; }
+    .zonas-container { display: flex; overflow-x: auto; gap: 20px; padding: 30px 20px; justify-content: center; }
+    .zona-box { flex: 0 0 auto; width: 300px; height: 300px; display: flex; align-items: center; justify-content: center; border-radius: 12px; }
+    .zona-box img { width: 80%; height: auto; }
+    #juguemos { background-image: url('https://i.postimg.cc/MGxJyfTc/Rectangle-35.png'); background-size: cover; background-position: center; padding: 40px 20px; text-align: center; position: relative; }
+    #gameCanvas { display: block; margin: 20px auto; border: 2px dashed #ccc; border-radius: 12px; background: rgba(255,255,255,0.8); width: 800px; height: 300px; }
+    #gameOver {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    #gameOver h2 { font-size: 3rem; margin-bottom: 20px; }
+    #gameOver p { font-size: 1.5rem; margin-bottom: 20px; }
+    #gameOver button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background: #ffd700;
+      color: #333;
+    }
+    #publicidad { padding: 0; text-align: center; }
+    #publicidad img { width: 100%; height: auto; display: block; }
+    .banner-final { display: flex; flex-wrap: wrap; background: #333; color: #fff; padding: 20px; gap: 20px; }
+    .banner-final .cuadros { flex: 1 1 200px; }
+    .banner-final h3 { margin-bottom: 5px; font-size: 1.2rem; }
+    .banner-final .linea { width: 50px; height: 3px; background: #fff; margin: 5px 0; }
+    .banner-final .linea-larga { width: 100px; }
+    .banner-final p { margin: 5px 0; font-size: 0.9rem; }
+    .banner-final .img-redes { margin-top: 10px; max-width: 100%; }
+    @media (max-width: 768px) {
+      .hero { flex-direction: column; padding: 20px; }
+      .hero img.abeja { margin: 0 0 20px 0; height: 250px; }
+      .hero-text { max-width: 100%; text-align: center; }
+      #gameCanvas { width: 100%; height: 200px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <img src="https://i.postimg.cc/wTM40Hx0/encabezadoo.png" alt="Logo Portal Infantil" class="logo" />
+      <span class="titulo">Portal Infantil | Secretaría Distrital de Movilidad</span>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="Moviparque.html">Moviparque</a></li>
+        <li><a href="Zonaescolar.html" class="activo">Zonas escolares</a></li>
+        <li><a href="Señalvial.html">Señales viales</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="https://i.postimg.cc/595fZjSx/ABEJA-2.png" alt="Abeja" class="abeja" />
+    <div class="hero-text">
+      <h2>SEÑALES VIALES</h2>
+      <p>Las señales de tránsito nos dicen cuándo parar, avanzar o tener cuidado, ¡como si fueran las reglas de un gran juego!<br>
+      Por ejemplo, cuando ves una señal de "STOP", es como si dijera: "¡Alto ahí, revisa antes de seguir!"<br>
+      En Bogotá, la Secretaría Distrital de Transporte se encarga de colocar y cuidar estas señales para que conductores, ciclistas y peatones sepan cómo moverse sin peligro.</p>
+    </div>
+  </section>
+
+  <section id="zonas">
+    <div class="zonas-header">
+      <h2>TIPOS DE SEÑALES VIALES</h2>
+    </div>
+    <div class="zonas-container">
+      <div class="zona-box"><img src="https://i.postimg.cc/d07qXB4X/Group-98.png" alt="Señal 1" /></div>
+      <div class="zona-box"><img src="https://i.postimg.cc/d07qXB4X/Group-98.png" alt="Señal 2" /></div>
+      <div class="zona-box"><img src="https://i.postimg.cc/d07qXB4X/Group-98.png" alt="Señal 3" /></div>
+      <div class="zona-box"><img src="https://i.postimg.cc/d07qXB4X/Group-98.png" alt="Señal 4" /></div>
+    </div>
+  </section>
+
+  <section id="juguemos">
+    <h2>¡Juguemos y Aprendamos!</h2>
+    <canvas id="gameCanvas"></canvas>
+    <div id="gameOver">
+      <h2>Game Over</h2>
+      <p id="finalScore">Puntuación: 0</p>
+      <button id="retryBtn">Reintentar</button>
+    </div>
+  </section>
+
+  <section id="publicidad">
+    <img src="https://i.postimg.cc/Kzn42GDX/publicidad.png" alt="Publicidad Rueda Seguro Rueda Feliz" />
+  </section>
+
+  <footer class="banner-final">
+    <div class="cuadros">
+      <h3>SECRETARÍA DE MOVILIDAD</h3>
+      <div class="linea linea-larga"></div>
+      <p>NIT 899.999.061-9</p>
+      <p>Correo Institucional: Bogotá te escucha</p>
+      <p>Radicación ciudadanía: Formulario radicación de correspondencia</p>
+      <p>Radicación exclusiva para entes de control y entidades públicas: <br>radicacionentidades@movilidadbogota.gov.co</p>
+      <p>E-mail exclusivo para notificaciones judiciales: <br>judicial@movilidadbogota.gov.co</p>
+      <p>Centro de Contacto de Movilidad: +57 (601) 364 9400 opción 2</p>
+      <p>Línea Nacional: 018000 127425</p>
+      <p>Denuncias por actos de corrupción</p>
+    </div>
+    <div class="cuadros">
+      <h3>INFORMACIÓN SDM</h3>
+      <div class="linea"></div>
+      <p>Acerca de nosotros</p>
+      <p>Política de privacidad</p>
+      <p>Política de derechos de autor y/o autorización de uso sobre los contenidos.</p>
+      <p>Mapa del sitio</p>
+      <p>Aplicativos de la SDM</p>
+    </div>
+    <div class="cuadros">
+      <h3>SERVICIOS</h3>
+      <div class="linea"></div>
+      <p>Trámites y Servicios</p>
+      <p>PQRSD</p>
+      <p>Consulta de Comparendos</p>
+      <p>Pago Seguro</p>
+    </div>
+    <div class="cuadros">
+      <h3>SÍGANOS</h3>
+      <div class="linea"></div>
+      <p>Síguenos en nuestras redes sociales</p>
+      <img src="https://i.postimg.cc/c40RCnHv/Group-114.png" alt="Redes sociales" class="img-redes">
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const canvas = document.getElementById('gameCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.clientWidth;
+      canvas.height = canvas.clientHeight;
+
+      const gameOverDiv = document.getElementById('gameOver');
+      const finalScoreP = document.getElementById('finalScore');
+      const retryBtn = document.getElementById('retryBtn');
+
+      // imágenes
+      const bg = new Image(); bg.src = 'https://i.postimg.cc/wvpJZJqX/escenario.png';
+      const carSprite = new Image(); carSprite.src = 'https://i.postimg.cc/sgMphsHh/personajes.png';
+      const sign30 = new Image(); sign30.src = 'https://i.postimg.cc/Hss0TQQ3/30-km.png';
+      const sign50 = new Image(); sign50.src = 'https://i.postimg.cc/nV1Y8dQC/50-km.png';
+      const signStop = new Image(); signStop.src = 'https://i.postimg.cc/7631Z9st/stop.png';
+
+      let loaded = 0;
+      [bg, carSprite, sign30, sign50, signStop].forEach(img => img.onload = () => {
+        if (++loaded === 5) requestAnimationFrame(loop);
+      });
+
+      const laneCount = 2;
+      let currentLane = 0;
+      let mileage = 40;
+      let offsetX = 0;
+      let isGameOver = false;
+      let score = 0;
+
+      const spacing = 1200;
+      const types = [
+        {img: sign30, limit: 30},
+        {img: sign50, limit: 50},
+        {img: signStop, limit: 0, isStop: true}
+      ];
+      let signs = [];
+      function initSigns() {
+        signs = types.map((type, i) => ({
+          ...type,
+          x: canvas.width + i * spacing,
+          passed: false,
+          appeared: false,
+          stopped: false
+        }));
+      }
+      initSigns();
+
+      window.addEventListener('keydown', e => {
+        if (isGameOver) return;
+        const key = e.key.toLowerCase();
+        if (key === 'w') currentLane = Math.max(0, currentLane - 1);
+        if (key === 's') currentLane = Math.min(laneCount - 1, currentLane + 1);
+        if (key === 'd') mileage = Math.min(100, mileage + 10);
+        if (key === 'a') mileage = Math.max(0, mileage - 10);
+        if (e.code === 'Space') mileage = 0;
+      });
+
+      retryBtn.addEventListener('click', () => {
+        isGameOver = false;
+        score = 0;
+        currentLane = 0;
+        mileage = 40;
+        offsetX = 0;
+        initSigns();
+        gameOverDiv.style.display = 'none';
+        requestAnimationFrame(loop);
+      });
+
+      function loop() {
+        if (isGameOver) return;
+        const speed = mileage / 20;
+
+        const scale = canvas.height / bg.naturalHeight;
+        const drawW = bg.naturalWidth * scale;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        offsetX -= speed;
+        if (offsetX <= -drawW) offsetX = 0;
+        ctx.drawImage(bg, offsetX, 0, drawW, canvas.height);
+        ctx.drawImage(bg, offsetX + drawW, 0, drawW, canvas.height);
+
+        const roadTop = canvas.height * 0.25;
+        const laneHeight = (canvas.height - roadTop) / laneCount;
+        ctx.strokeStyle = '#888'; ctx.lineWidth = 2; ctx.setLineDash([10,10]);
+        for (let i = 1; i < laneCount; i++) {
+          const y = roadTop + i * laneHeight;
+          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+        }
+        ctx.setLineDash([]);
+
+        const cx = canvas.width * 0.2;
+        signs.forEach(sign => {
+          sign.x -= speed;
+          const signScale = 0.3;
+          const sw = sign.img.width * signScale;
+          const sh = sign.img.height * signScale;
+          const sy = roadTop + (laneHeight - sh) / 2;
+          ctx.drawImage(sign.img, sign.x, sy, sw, sh);
+
+          if (!sign.appeared && sign.x + sw < canvas.width) {
+            sign.appeared = true;
+            sign.stopped = false;
+          }
+          if (sign.appeared && mileage === 0) {
+            sign.stopped = true;
+          }
+          if (!sign.passed && sign.x + sw < cx) {
+            sign.passed = true;
+            if (sign.isStop) {
+              if (sign.stopped) score++; else return gameOver();
+            } else {
+              if (mileage <= sign.limit) score++; else return gameOver();
+            }
+          }
+        });
+
+        if (signs[0].x + signs[0].img.width * 0.3 < 0) {
+          const s = signs.shift();
+          s.x = signs[signs.length-1].x + spacing;
+          s.passed = false; s.appeared = false; s.stopped = false;
+          signs.push(s);
+        }
+
+        const charScale = 0.5;
+        const ch = canvas.height * charScale;
+        const cw = ch * (carSprite.naturalWidth / carSprite.naturalHeight);
+        const cy = roadTop + currentLane * laneHeight + (laneHeight - ch) / 2;
+        ctx.drawImage(carSprite, 0,0,carSprite.naturalWidth,carSprite.naturalHeight, cx, cy, cw, ch);
+
+        ctx.fillStyle = '#000';
+        ctx.font = '20px Arial';
+        ctx.fillText(`Kilometraje: ${mileage} km`, 10, 25);
+        ctx.fillText(`Puntuación: ${score}`, 10, 50);
+
+        requestAnimationFrame(loop);
+      }
+
+      function gameOver() {
+        isGameOver = true;
+        finalScoreP.textContent = `Puntuación: ${score}`;
+        gameOverDiv.style.display = 'flex';
+      }
+    })();
+  </script>
+</body>
+</html>
